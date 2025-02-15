@@ -2,12 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development', // or 'production'
+  mode: 'production', // Use 'production' for deployment
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'), // Change 'dist' to 'build'
+    path: path.resolve(__dirname, 'build'), // Ensure output path is 'build'
     filename: 'bundle.js',
-    publicPath: '/', // Ensures proper routing
+    publicPath: '/Ogero_project1.github.io/', // Set to the correct subdirectory
   },
   devServer: {
     static: {
@@ -15,7 +15,7 @@ module.exports = {
     },
     port: 8080,
     open: true,
-    historyApiFallback: true, // ✅ Fixes "Cannot GET /register"
+    historyApiFallback: true, // Fixes "Cannot GET /register"
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -33,7 +33,6 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
-      // Add the rule for SVG files
       {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
