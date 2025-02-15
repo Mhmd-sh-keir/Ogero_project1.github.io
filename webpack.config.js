@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development', // or 'production'
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build'), // Change 'dist' to 'build'
     filename: 'bundle.js',
     publicPath: '/', // Ensures proper routing
   },
