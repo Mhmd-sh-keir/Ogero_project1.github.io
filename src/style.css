@@ -1,0 +1,618 @@
+:root {
+  --primary-color: #1a91ff;
+  --sidebar-bg: #ffffff;
+  --hover-bg: #f8f9fa;
+  --text-color: #333;
+  --border-color: #e0e0e0;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --error-color: #ff4d4d;
+  --success-color: #4CAF50;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: var(--text-color);
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Dashboard Layout */
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: white;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background: var(--sidebar-bg);
+  box-shadow: var(--shadow);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  transition: width 0.3s ease, padding 0.3s ease;
+}
+
+.sidebar.closed {
+  width: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0 1rem;
+}
+
+.sidebar nav ul li {
+  position: relative;
+}
+
+.sidebar nav ul li a {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  margin: 0.25rem 0;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.sidebar nav ul li a:hover {
+  background-color: var(--hover-bg);
+}
+
+.sidebar .icon {
+  margin-right: 1rem;
+  font-size: 1.2rem;
+}
+
+/* Submenu Styles */
+.submenu {
+  margin-left: 2rem;
+  display: none;
+  list-style-type: none;
+  padding: 0.5rem 0;
+}
+
+.submenu.open {
+  display: block;
+}
+
+.submenu li {
+  margin: 0.25rem 0;
+}
+
+.submenu a {
+  padding: 0.5rem 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  display: block;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.submenu a:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
+.dashboard:has(.sidebar.closed) .content {
+  margin-left: 0;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  transition: padding-left 0.3s ease;
+}
+
+.dashboard:has(.sidebar.closed) .toolbar {
+  padding-left: 0;
+}
+
+.add-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.add-btn:hover {
+  background-color: #0077cc;
+}
+
+.search-bar {
+  margin-left: auto;
+}
+
+.search-bar input {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  width: 250px;
+  transition: all 0.2s;
+}
+
+.search-bar input:focus {
+  outline: 2px solid var(--primary-color);
+  border-color: transparent;
+}
+
+/* Data Table */
+.data-table {
+  background: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  position: sticky;
+  top: 0;
+}
+
+td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tr:hover {
+  background-color: #e9ecef;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.delete-btn,
+.modify-btn,
+.view-details-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s;
+  margin-left: 0.2rem;
+}
+
+.delete-btn {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+}
+
+.modify-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.modify-btn:hover {
+  background-color: #0077cc;
+}
+
+.view-details-btn {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.view-details-btn:hover {
+  background-color: #45a049;
+}
+
+/* Auth Pages */
+.auth-container {
+  max-width: 500px;
+  margin: 100px auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 1.5rem;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.auth-container input:focus {
+  outline: 2px solid var(--primary-color);
+  border-color: transparent;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+
+.auth-container button:hover {
+  background-color: #0077cc;
+}
+
+/* Error Message */
+.error-message {
+  color: var(--error-color);
+  margin-bottom: 1rem;
+  text-align: center;
+  background-color: #ffebee;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Logout Button */
+.logout-btn {
+  padding: 0.6rem 1rem;
+  background-color: var(--error-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #cc0000;
+}
+
+/* Application Page */
+.application {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.application h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.application form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.application form input {
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.application form input:focus {
+  outline: 2px solid var(--primary-color);
+  border-color: transparent;
+}
+
+.application form button {
+  padding: 0.8rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.application form button:hover {
+  background-color: #0077cc;
+}
+
+.proceed-btn {
+  padding: 0.8rem;
+  background-color: var(--success-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+
+.proceed-btn:hover {
+  background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+  
+  .content {
+    padding: 1.5rem;
+  }
+  
+  .toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .search-bar {
+    width: 100%;
+    margin-left: 0;
+  }
+  
+  .search-bar input {
+    width: 100%;
+  }
+  
+  .auth-container {
+    margin: 50px auto;
+    padding: 1.5rem;
+  }
+}
+
+/* Additional Styles */
+.body1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.map {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.block {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.Submit {
+  width: 95%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.Submit:hover {
+  background: #0056b3;
+}
+
+/* Sidebar Toggle */
+.sidebar-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  color: var(--text-color);
+  margin-top: -1rem;
+}
+
+/* Collapsed Sidebar */
+.sidebar.closed {
+  width: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Smooth Transition */
+.sidebar {
+  transition: all 0.3s ease;
+}
+
+/* Adjust content area when sidebar is closed */
+.dashboard:has(.sidebar.closed) .content {
+  margin-left: 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode .sidebar {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.dark-mode .content {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.dark-mode .data-table {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+.dark-mode th {
+  background-color: #333;
+  color: #ffffff;
+}
+
+.dark-mode td {
+  border-bottom: 1px solid #444;
+}
+
+.dark-mode tr:nth-child(even) {
+  background-color: #3a3a3a;
+}
+
+.dark-mode tr:hover {
+  background-color: #4a4a4a;
+}
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1.5rem;
+}
+
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: var(--shadow);
+}
+
+.modal h3 {
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.modal-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.modal-actions button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-actions button[type="submit"] {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.modal-actions button[type="button"] {
+  background-color: var(--error-color);
+  color: white;
+}
